@@ -1,0 +1,7 @@
+1. Prepare the repository for the project
+- Create a project repository on GitHub
+- Create a directory called ".github" 
+- inside .github, create a directory called "workflows"
+- Put the workflow files (ending in yaml) in the workflows directory
+
+2. Add contents to the workflow file (ending .yaml)

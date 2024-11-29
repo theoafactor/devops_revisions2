@@ -1,0 +1,42 @@
+name: "Start workflow"
+on: 
+    push:
+        branches:
+        - master
+jobs:
+    test_job:
+        runs-on: ubuntu-latest
+        steps: 
+        - name: "Checkout"
+          uses: actions/checkout@v4
+          
+        - name: "Test the code with SonarQube"
+          run: echo "Test with SonarQube"
+
+        - name: "Build a DOcker image from the source code"
+          run:  echo "build DOcker image"
+
+        - name: "Push the Docker image to the Docker Hub"
+          run: echo "Push to DOcker HUb"
+
+        - name: "ssh into EC2 Instance"
+          run: |
+            # Check to see if Docker exists, if it does, then don't install
+            echo "Install docker on EC2 instance"
+    
+            # Stop and terminate/remove all containers
+             sudo docker stop $( sudo docker ps -a -q )
+             sudo docker rm $(sudo docker ps -a -q) 
+
+            # Remove all Docker images
+            sudo rmi $( sudo docker images)
+
+            # Pull the latest image
+            sudo docker pull <image>
+
+            # Run the image image as a container
+            sudo docker run ....
+
+
+
+            
